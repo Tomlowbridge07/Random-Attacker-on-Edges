@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {1}Introduction to a random attacker patroller game with attacks on edges}{1}
+\contentsline {section}{\numberline {2}Relaxation}{3}
+\contentsline {section}{\numberline {3}Single-edge problem}{4}
+\contentsline {subsection}{\numberline {3.1}Acyclic graphs}{5}
+\contentsline {section}{\numberline {4}Index Heuristic on Acyclic graphs}{6}
+\contentsline {section}{Appendices}{i}
+\contentsline {section}{\numberline {A}Theorem on Index}{i}
