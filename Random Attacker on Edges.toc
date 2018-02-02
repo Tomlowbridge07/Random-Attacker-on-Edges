@@ -3,5 +3,7 @@
 \contentsline {section}{\numberline {3}Single-edge problem}{4}
 \contentsline {subsection}{\numberline {3.1}Acyclic graphs}{5}
 \contentsline {section}{\numberline {4}Index Heuristic on Acyclic graphs}{6}
+\contentsline {subsection}{\numberline {4.1}Lower bound}{7}
+\contentsline {section}{\numberline {5}Removing Directional problem}{8}
 \contentsline {section}{Appendices}{i}
 \contentsline {section}{\numberline {A}Theorem on Index}{i}

@@ -244,6 +244,7 @@ We may want to check that this is never negative. As $Y \leq 1$ we note that $2E
 We will now attempt to prove 3 statements, as in the theorem
 
 \begin{theorem}
+\label{theorem: Index for Acylic graphs}
 For $W(m)$ as described above:
 \begin{itemize}
 \item $W(m)$ is non-decreasing
@@ -262,9 +263,134 @@ W_{k,j}(m)=c \lambda \Bigg(mE_{Y_{k,j}} \left[\int_{m+1-2Y_{k,j}}^{m+2-2Y_{k,j}}
 
 To implement a heuristic based on this index, called the \textit{Index-Heuristic}(IH), we choose the initial node, by assuming that the graph has been neglected for a long time. Setting $S_{k,j}=B_{k,j}+1$ initially and choosing the edge with the with the highest index.
 
-Once an edge is selected, the initial direction needs to be selected ???
+??? Once an edge is selected, the initial direction needs to be selected- This feels like it should just depend on the distributions skew to not leave as many possible attackers behind ???
 
-Once an edge and direction are selected, the patroller looks at all adjacent edges (or equivalently nodes) and calculates the indices of these edges to decide which one to traverse, by choosing the highest. Mathematically when in state $\bm{s}$ (Note. No directional information is kept, as we know we are always traversing in the opposite direction to before) we will choose edge $(l(\bm{s}),j)$ where $W_{l(\bm{s}),j}=\min\limits_{} 
+Once an edge and direction are selected, the patroller looks at all adjacent edges (or equivalently nodes) and calculates the indices of these edges to decide which one to traverse, by choosing the highest. Mathematically when in state $\bm{s}$ (Note. No directional information is kept, as we know we are always traversing in the opposite direction to before) we will choose edge $(l(\bm{s}),j)$ where $W_{l(\bm{s}),j}(s_{l(\bm{s}),j})=\min\limits_{j' \in \mathcal{A}(\bm{s})} W_{l(\bm{s}),j'}(s_{l(\bm{s}),j'})$
+
+\subsection{Lower bound}
+Recall that $C^{\text{OPT}} \geq C^{\text{TR}} \geq C(\omega)$. In this section we will compute the tightest bound so that $C^{\text{TR}}=\max\limits_{\omega
+\geq 0} C(\omega)$.
+
+As $W_{k,j}(m)$ is the per-visit cost which makes the patroller indifferent from choosing to visit the edge $(k,j)$ every $m$ or $m+1$ time units. So for a per-visit cost define
+
+\begin{equation}
+M_{k,j}(\omega)= \begin{cases}
+\infty \text{ if } \omega \geq W_{k,j}(B_{k,j}+1) \\
+\min \{m \, | W_{k,j}(m) > \omega  \}
+\end{cases}
+\end{equation}
+
+From theorem \ref{theorem: Index for Acylic graphs} this $M_{k,j}(\omega)$ represents the optimal interval between visits to edge $(k,j)$ when the patrol visit costs $\omega$. According to this definition there are multiple optimal intervals, so we will break ties by choosing the longest interval.
+
+Consequently we can write that $C(\omega)=\sum\limits_{(k,j) \in E} C_{k,j}(\omega) - \omega$ where
+
+\begin{align*}
+C_{k,j}(\omega)&=f_{k,j}(M_{k,j}(\omega)) \\
+& =\begin{cases}
+c_{k,j} \lambda_{k,j} \text{ ,if } \omega \geq W_{k,j}(B_{k,j}+1) \\
+\frac{c_{k,j} \lambda_{k,j} E_{Y} \left[ \int_{0}^{M_{k,j}(\omega)} P(X_{k,j} \leq t ) dt \right] + \omega}{M_{k,j}(\omega)} \text{ ,otherwise}
+\end{cases}
+\end{align*}
+
+The function $C_{k,j}(\omega)$ represents the optimal long-run cost for edge $(k,j)$ if the patroller is charged $\omega$ per visit. Now we have that
+\begin{itemize}
+\item $C_{k,j}(\omega)$ is non-decreasing in $\omega$, as the edge can always do better with a smaller service charge.
+\item $C_{k,j}(\omega)$ is piecewise linear with turning points occuring at $\omega=W_{k,j}(m)$ for $m=1,2,...,B_{k,j}+1$
+\item $C_{k,j}(\omega)$ is concave as for $\omega \neq W_{k,j}(m)$ the function $M_{k,j}(\omega)$ remains constant and $C'_{k,j}(\omega)=\frac{1}{M_{k,j}(\omega)}$ which is non-increasing in $\omega$
+\end{itemize}
+
+Consequently $C(\omega)=\sum\limits_{(k,j) \in E} C_{k,j}(\omega) - \omega$ is also piecewise linear and concave. Therefore it is straightforward to calculate $\max\limits_{\omega \geq 0} C(\omega)$, as the optimal solution is either a point or a line segment. When $\omega \neq W_{k,j}(m)$ we have $C'(\omega)=\sum\limits_{(k,j) \in E} \frac{1}{M_{k,j}(\omega)} - 1$. That is $C'(\omega)$ is a step function that changes at values of $W_{k,j}(m)$ for some $(k,j) \in E , m$ and is non-increasing. In the case that the optimal solution is unique, named $\omega^{*}$ such that
+
+\begin{align*}
+\omega < \omega^{*} \iff C'(\omega) > 0 \iff \sum\limits_{(k,j) \in E} \frac{1}{M_{k,j}(\omega)} > 1 ,\\
+\omega > \omega^{*} \iff C'(\omega) < 0 \iff \sum\limits_{(k,j) \in E} \frac{1}{M_{k,j}(\omega)} < 1 .
+\end{align*}
+
+In the case where the optimal solution consists of a line segement we need to find $\omega^{*}$ s.t $C'(\omega^{*})=0 \iff \sum\limits_{(k,j) \in E} \frac{1}{M_{k,j}(\omega^{*})} = 1$
+
+\section{Removing Directional problem}
+An idea to remove the problem with the direction for an edge is to assume all the edges are directed, that is the edge $(k,j)$ can only be used from $k$ to get to $j$. Then we simply have a state space $\Omega= \{ \bm{s} \, | \, s_{k,j}=1,2,3,... \, \forall (k,j) \in E $. That are state space is just dependent on what time we last went to visit it. Hence a very simple transition
+
+\begin{note}
+We no longer assume that $(k,j)$ has $k \leq j$, as we now allow the full gambit of combinations.
+\end{note}
+
+This will lead to a slightly easier cost function to work with
+
+\begin{align*}
+C_{k,j}(\bm{s},i)&=c_{k,j} \lambda_{k,j} \int_{0}^{1} f_{k,j}(y) \left(\int_{0}^{s_{k,j}} P(t-1 < X_{k,j} \leq t) dt \right) dy \\+
+&=c_{k,j} \lambda_{k,j} \int_{0}^{s_{k,j}} P(t-1 < X_{k,j} \leq t) dt \\
+&=c_{k,j} \lambda_{k,j} \int_{s_{k,j}-1}^{s_{k,j}} P(X_{k,j} \leq t) dt
+\end{align*}
+
+This leads us to suggest that it will follow the same idea as the decision on when to visit nodes, and we can use the edge-vertex dual to convert between these two problems
+
+\begin{definition}[Edge-vertex dual]
+A \textit{edge-vertex dual} of a directed graph $G$, called $EV(G)$, is made of a vertex set $V_{EV(G)}=E_{G}$ and whose edge set is made up of a directed edge between $e_{1},e_{2} \in V_{EV(G)}$ if in $G$ the edge $e_{1}$'s head meets the tail of $e_{2}$ at some node.
+\end{definition}
+
+\begin{myfigure}
+\begin{tikzpicture}[baseline=(current bounding box.north),-,auto,node distance=2cm,
+                    main node/.style={circle,draw,fill=black,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {};
+  \node[main node] (2) [right of=1] {};
+  \node[main node] (3) [below of=1] {};
+  \node[main node] (4) [below of=2] {};
+  
+
+  \path[thick,->]
+  (1) edge (2);
+  
+  \path[thick,->,bend right=80]
+  (2) edge (1);
+  
+  \path[thick,->]
+  (2) edge (4)
+  (4) edge (3)
+  (1) edge (3)
+  (3) edge (2);
+  
+  \node[main node,fill=red] (1a) [shift={(6,0)}] at (1) {};
+  \node[main node,fill=red] (2a) [shift={(0,0.75)}] at (1a) {};
+  \node[main node,fill=red] (3a) [shift={(1,-1)}] at (1a) {};
+  \node[main node,fill=red] (4a) [shift={(0,-2)}] at (1a) {};
+  \node[main node,fill=red] (5a) [shift={(-1,-1)}] at (1a) {};
+  \node[main node,fill=red] (6a) [shift={(0,-1)}] at (1a) {};
+  
+  \path[thick,->,bend right=30,red]
+  (1a) edge (2a);
+  
+   \path[thick,->,bend right=30,red]
+  (2a) edge (1a)
+  (2a) edge (5a);
+  
+   \path[thick,->,red]
+   (1a) edge (3a)
+   (3a) edge (4a)
+   (4a) edge (6a)
+   (5a) edge (6a)
+   (6a) edge (3a);
+   
+   \path[thick,->,bend right=80,red]
+   (6a) edge (2a); 
+ 
+\end{tikzpicture}
+\caption{A graph $G$ and its directed edge-vertex dual, $EV(G)$}
+\end{myfigure}
+
+This gives us a direction conversion between the current problem and a related problem to that which has already been solved.
+
+Now to look at solving the normal node problem, when we have directed edges, well this restriction just restricts the action space (and therefore what we count as adjacent) so the heuristics still stand.
+
+Hence for we have a solution for our problem, convert to the edge-vertex dual and then solve as before.
+
+This will lead to the same index as before.
+
+However we have a few weird points to look at
+\begin{itemize}
+\item Is there a problem if one node has no adjacent nodes (this would disconnect the graph and lead to a problem with our assumptions)
+\end{itemize}
 
 %End of main part of document
 \bibliography{mybib}
