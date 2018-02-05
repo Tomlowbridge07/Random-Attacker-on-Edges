@@ -5,5 +5,7 @@
 \contentsline {section}{\numberline {4}Index Heuristic on Acyclic graphs}{6}
 \contentsline {subsection}{\numberline {4.1}Lower bound}{7}
 \contentsline {section}{\numberline {5}Removing Directional problem}{8}
+\contentsline {section}{\numberline {6}Converting undirected problem to directed problem}{9}
 \contentsline {section}{Appendices}{i}
 \contentsline {section}{\numberline {A}Theorem on Index}{i}
+\contentsline {section}{\numberline {B}Directional graphs with attacks on nodes}{ii}

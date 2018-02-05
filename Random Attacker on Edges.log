@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.6.5)  2 FEB 2018 15:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.6.5)  5 FEB 2018 14:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1368,14 +1368,19 @@ Overfull \hbox (50.92223pt too wide) detected at line 262
  []
 
 [6] [7] [8]
+Overfull \hbox (19.0829pt too wide) in paragraph at lines 394--394
+[]\OT1/cmr/bx/n/14.4 Converting undi-rected prob-lem to di-rected prob-
+ []
+
+[9]
 No file "Random Attacker on Edges".bbl.
 
-Overfull \hbox (65.12167pt too wide) in paragraph at lines 411--411
+Overfull \hbox (65.12167pt too wide) in paragraph at lines 451--451
 [] 
  []
 
-[1]
-Overfull \hbox (23.40459pt too wide) detected at line 417
+
+Overfull \hbox (23.40459pt too wide) detected at line 457
 \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 m[]\OT1/cmr/m/n/10 ) \OMS/c
 msy/m/n/10 ^^@ \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 m[] \OMS/cms
 y/m/n/10 ^^@ \OT1/cmr/m/n/10 1) = [](\OML/cmm/m/it/10 W\OT1/cmr/m/n/10 (\OML/cm
@@ -1386,42 +1391,42 @@ m/n/10 1) \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 W\OT1/cmr/m/n/10 (\OML/cmm/m/it
 /10 m\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 ^^T \OT1/cmr/m/n/10 0
  []
 
-[2] (./Random Attacker on Edges.aux) ) 
+[1] [2] (./Random Attacker on Edges.aux) ) 
 Here is how much of TeX's memory you used:
- 24837 strings out of 492995
- 499119 string characters out of 6132690
- 512756 words of memory out of 5000000
- 27985 multiletter control sequences out of 15000+600000
+ 24841 strings out of 492995
+ 499235 string characters out of 6132690
+ 512765 words of memory out of 5000000
+ 27989 multiletter control sequences out of 15000+600000
  17965 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,17n,103p,10496b,831s stack positions out of 5000i,500n,10000p,200000b,80000s
-</maths/linuxlocal/AMD64/texlive/2017/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></maths/linuxlocal/AMD64/texl
-ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></maths/linuxloca
-l/AMD64/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></mat
-hs/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra
-/cmex7.pfb></maths/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi10.pfb></maths/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi5.pfb></maths/linuxlocal/AMD64/texlive/2017/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></maths/linuxlocal/AMD64/texlive/2
-017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></maths/linuxlocal/AM
-D64/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></ma
-ths/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-10.pfb></maths/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr12.pfb></maths/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr17.pfb></maths/linuxlocal/AMD64/texlive/2017/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr5.pfb></maths/linuxlocal/AMD64/texlive/2017/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></maths/linuxlocal/AMD64/texli
-ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></maths/linuxlocal
-/AMD64/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></maths
-/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
-pfb></maths/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmti10.pfb></maths/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/type1/pu
-blic/amsfonts/symbols/msbm10.pfb>
-Output written on "Random Attacker on Edges.pdf" (11 pages, 245562 bytes).
+ 55i,17n,103p,10496b,883s stack positions out of 5000i,500n,10000p,200000b,80000s
+</maths/linuxlocal/AMD64/texlive/2017
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></maths/linuxlocal/AMD64/
+texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></maths/linux
+local/AMD64/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/maths/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cme
+xtra/cmex7.pfb></maths/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi10.pfb></maths/linuxlocal/AMD64/texlive/2017/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi5.pfb></maths/linuxlocal/AMD64/texlive/2017/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></maths/linuxlocal/AMD64/texli
+ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></maths/linuxloca
+l/AMD64/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb>
+</maths/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr10.pfb></maths/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr12.pfb></maths/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr17.pfb></maths/linuxlocal/AMD64/texlive/2017/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr5.pfb></maths/linuxlocal/AMD64/texlive/201
+7/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></maths/linuxlocal/AMD64/t
+exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></maths/linuxl
+ocal/AMD64/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></m
+aths/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy7.pfb></maths/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmti10.pfb></maths/linuxlocal/AMD64/texlive/2017/texmf-dist/fonts/type
+1/public/amsfonts/symbols/msbm10.pfb>
+Output written on "Random Attacker on Edges.pdf" (12 pages, 250847 bytes).
 PDF statistics:
- 119 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
+ 122 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

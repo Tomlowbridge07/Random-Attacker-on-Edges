@@ -330,6 +330,7 @@ A \textit{edge-vertex dual} of a directed graph $G$, called $EV(G)$, is made of 
 \end{definition}
 
 \begin{myfigure}
+\begin{center}
 \begin{tikzpicture}[baseline=(current bounding box.north),-,auto,node distance=2cm,
                     main node/.style={circle,draw,fill=black,font=\sffamily\bfseries}]
 
@@ -376,21 +377,60 @@ A \textit{edge-vertex dual} of a directed graph $G$, called $EV(G)$, is made of 
    (6a) edge (2a); 
  
 \end{tikzpicture}
+\end{center}
 \caption{A graph $G$ and its directed edge-vertex dual, $EV(G)$}
 \end{myfigure}
 
-This gives us a direction conversion between the current problem and a related problem to that which has already been solved.
+This gives us a direction conversion between the current problem and a related problem to that which has already been solved. See Appendix \ref{Appendix: directional graphs with attacks on nodes} for an explanation of the slight alteration to the directional graphs with random attackers on nodes problem.
 
-Now to look at solving the normal node problem, when we have directed edges, well this restriction just restricts the action space (and therefore what we count as adjacent) so the heuristics still stand.
+Now we have converted the problem into one which can be `solved' by using the already developed heuristic, with the same index idea as the cost function for an edge $(k,j)$ is the same as the node $i$ which represents the edge in our edge-vertex dual.
 
 Hence for we have a solution for our problem, convert to the edge-vertex dual and then solve as before.
 
-This will lead to the same index as before.
+\begin{note}
+The true problem with have an undirected graph in the edge attacker set up is that the patroller can use it in both directions. The question is now can we convert the undirected graph to a directed graph with the same properties.
+\end{note}
 
-However we have a few weird points to look at
-\begin{itemize}
-\item Is there a problem if one node has no adjacent nodes (this would disconnect the graph and lead to a problem with our assumptions)
-\end{itemize}
+\section{Converting undirected problem to directed problem}
+We now look at converting an undirected edge $(k,j)$ with $k \leq j$ into two directed edges $(k,j)$ and $(j,k)$. Well as the Poisson process for arrivals on this edges is $\lambda_{k,j}$, we can thin this between the two lines so that the arrival on the forward direction is $\overrightarrow{\lambda_{k,j}}=\frac{\lambda_{k,j}}{2}$ and the arrival on the backwards direction is
+$\overleftarrow{\lambda_{k,j}}=\frac{\lambda_{k,j}}{2}$.
+
+Now for the forward direction we will assume the distribution of arrivals holds true, i.e $\overrightarrow{f_{k,j}}(y)=f_{k,j}(y)$, however on the backwards we need to flip the distribution, as this arrow will want to see it forward for it (which is backwards for the forward) so $\overleftarrow{f_{k,j}}(y)=f_{k,j}(1-y)$.
+
+\begin{note}
+This means if the distribution $f_{k,j}(y)$ is symmetric then we will have the same distribution on the conversion.
+\end{note}
+
+Now we can perform this on each edge $(k,j)$ and then convert to the edge-vertex dual and use the already developed heuristic, however we may run into an issue on equivalence to our original problem.
+
+\begin{myfigure}
+\begin{center}
+\begin{tikzpicture}[baseline=(current bounding box.north),-,auto,node distance=2cm,
+                    main node/.style={circle,draw,fill=black,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {};
+  \node[main node] (2) [right of=1] {};
+  
+
+  \path[thick]
+  (1) edge (2);
+  
+  \node[main node] (1a) [shift={(5,0)}] at (1) {};
+  \node[main node] (2a) [shift={(5,0)}] at (2) {};
+  
+  \path[thick,bend right=45,->]
+  (1a) edge (2a)
+  (2a) edge (1a);
+  
+ 
+\end{tikzpicture}
+\end{center}
+\caption{Converting an undirected edge to directed}
+\end{myfigure}
+
+The problem with this type of conversion is that the attackers on the edges now think of them as unique whereas in the initial undirected they are not unique to the direction you traverse the edge. A simple idea to solve this problem could be to add up the indices on the two edges (However at first glance this would only seem to work if the distribution is symmetric, due to the attackers positioning)
+ 
+For now we will assume that the distribution is symmetric, then summing the indices created in the edge-vertex dual's nodes (the pair of nodes that correspond to a single edge in the original problem) may allow us to make a decision if we are using the simple heuristic of which edge to traverse now, as both of these will be incurred if we allow the process to continue.
 
 %End of main part of document
 \bibliography{mybib}
@@ -403,7 +443,7 @@ However we have a few weird points to look at
 \section{Theorem on Index}
 \label{Appendix: theorem on index}
 \begin{proof}
-We will prove each statement seperately
+We will prove each statement separately
 \begin{itemize}
 \item To see its non-decreasing observe that
 \begin{align*}
@@ -422,4 +462,9 @@ $$f(m'+1)-f(m')=\frac{1}{m'(m'+1)} (W(m') -\omega) \geq \frac{1}{m'(m'+1)} (W(m'
 if $$\omega \geq W(m) \, \forall m \iff \omega \geq \sup\limits_{m=0,1,...} W(m)=\lim\limits_{m \rightarrow \infty} W(m)=c \lambda (1+ E[x-2Y])$$
 \end{proof}
 
+\section{Directional graphs with attacks on nodes}
+\label{Appendix: directional graphs with attacks on nodes}
+Consider the standard problem, the only thing we need to note is that the adjacency matrix need not be symmetric, and this means are actions are limited, however the developed heuristic still remains the same.
+
+We will however assume that the directional graph has no 'closed states', i.e that every state is adjacent to some other state (other than itself), this is however included in the assumption that the graph is connected as no node should be unreachable from any node.
 \end{document}
