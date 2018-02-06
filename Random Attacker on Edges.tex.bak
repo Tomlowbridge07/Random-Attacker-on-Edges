@@ -430,7 +430,7 @@ Now we can perform this on each edge $(k,j)$ and then convert to the edge-vertex
 
 The problem with this type of conversion is that the attackers on the edges now think of them as unique whereas in the initial undirected they are not unique to the direction you traverse the edge. A simple idea to solve this problem could be to add up the indices on the two edges (However at first glance this would only seem to work if the distribution is symmetric, due to the attackers positioning)
  
-For now we will assume that the distribution is symmetric, then summing the indices created in the edge-vertex dual's nodes (the pair of nodes that correspond to a single edge in the original problem) may allow us to make a decision if we are using the simple heuristic of which edge to traverse now, as both of these will be incurred if we allow the process to continue.
+For now we will assume that the distribution is symmetric, then summing the indices created in the edge-vertex dual's nodes (the pair of nodes that correspond to a single edge in the original problem) may allow us to make a decision if we are using the simple heuristic of which edge to traverse now, as both of these will be incurred if we allow the process to continue. This is the same as just playing on the graph's edge-vertex dual, without directional problems.
 
 %End of main part of document
 \bibliography{mybib}
